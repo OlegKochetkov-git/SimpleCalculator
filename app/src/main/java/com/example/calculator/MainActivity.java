@@ -7,26 +7,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
-    private boolean isOpPressed = false;
-
-    private double firstNumber = 0;
-
-    private int secondNumberIndex = 0;
-
+    private boolean isOpPressed;
+    private double firstNumber;
+    private int secondNumberIndex;
     private char currentOp = 0;
-
-    private boolean isDot = false;
-
+    private boolean isDot;
     private TextView calculatorScreen;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Objects.requireNonNull(getSupportActionBar()).setElevation(0);  //deleted shadow action bar
 
         calculatorScreen = findViewById(R.id.calculator_screen);
 
@@ -146,9 +143,6 @@ public class MainActivity extends AppCompatActivity {
                             isDot = true;
                         }
                         break;
-
-
-
                 }
             }
         };
@@ -190,8 +184,6 @@ public class MainActivity extends AppCompatActivity {
                 isDot = false;
             }
         });
-
-
     }
 
     private void opPressed(char operation) {
@@ -210,6 +202,4 @@ public class MainActivity extends AppCompatActivity {
         isDot = false;
         currentOp = operation;
     }
-
-
 }
